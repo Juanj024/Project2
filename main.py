@@ -32,6 +32,8 @@ class VendingMachine:
 #reconizing which item the user pick depending on the number
     def inputs(self):
         self.choice = int(input("Select a number from the machine "))
+        while self.choice > len(menuItems):
+            self.choice = int(input("Select a number from the machine "))
         if self.choice == sprite.place:
             self.items = sprite
         elif self.choice == milk.place:
@@ -51,11 +53,12 @@ class VendingMachine:
         if self.money >= self.items.price:
             self.change = self.money - self.items.price
             round(self.change, 2)
-            return print(f"Thank you! here is your {self.items.name} *🍾* your change is {self.change}")
+            return print(f"Thank you! here is your {self.items.name} *🍾* your change is ${self.change}")
         else:
             self.change = self.items.price - self.money
             round(self.change,2)
             return print(f"Sorry the money inserted is not enough, you need ${self.change} more!!!")
+
 
 
 
